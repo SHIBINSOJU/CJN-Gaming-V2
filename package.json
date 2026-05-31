@@ -1,0 +1,29 @@
+{
+  "name": "cjn-mc-status-bot",
+  "version": "1.0.0",
+  "description": "Professional Discord.js v14 Minecraft Server Status Bot",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "deploy": "node src/scripts/deploy-commands.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "mongoose": "^8.4.0",
+    "minecraft-server-util": "^5.4.0",
+    "dotenv": "^16.4.5",
+    "winston": "^3.13.0",
+    "node-cron": "^3.0.3",
+    "p-queue": "^7.4.1",
+    "node-cache": "^5.1.2",
+    "ms": "^2.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
