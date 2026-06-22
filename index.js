@@ -52,8 +52,7 @@ async function bootstrap() {
     // 3. Login
     await client.login(process.env.DISCORD_TOKEN);
 
-    // 4. Start Express web server (non-blocking alongside Discord)
-    startWebServer();
+    // (web server already started at boot)
   } catch (err) {
     logger.error(`Bootstrap failed: ${err.message}`);
     process.exit(1);
@@ -84,4 +83,8 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
+// ─── Start web server immediately (before Discord/MongoDB) ─
+// This ensures the site and /health are reachable on Render
+// even while the bot is still connecting.
+startWebServer();
 bootstrap();
