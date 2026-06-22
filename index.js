@@ -9,6 +9,7 @@ const { loadCommands } = require('./src/handlers/commandHandler');
 const { loadEvents } = require('./src/handlers/eventHandler');
 const { loadComponents } = require('./src/handlers/componentHandler');
 const StatusMonitorService = require('./src/services/StatusMonitorService');
+const { startWebServer } = require('./server');
 
 // ─── Client Setup ───────────────────────────────────────────
 const client = new Client({
@@ -50,6 +51,9 @@ async function bootstrap() {
 
     // 3. Login
     await client.login(process.env.DISCORD_TOKEN);
+
+    // 4. Start Express web server (non-blocking alongside Discord)
+    startWebServer();
   } catch (err) {
     logger.error(`Bootstrap failed: ${err.message}`);
     process.exit(1);
